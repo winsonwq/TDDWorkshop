@@ -18,6 +18,13 @@ describe('curry', function () {
     done();
   });
 
-  
+  describe('pass same length of arguments in currid function', function () {
+
+    it('should perform as the same with my function', function (done) {
+      curriedFunc(1, 2, 3).should.equal(func(1, 2, 3));
+      done();
+    });
+
+  });
 
 });

@@ -60,6 +60,11 @@ describe('curry', function () {
         done();
       });
 
+      it('should return correct value', function (done) {
+        curriedFunc(1, 2, undefined)(3).should.equal(6);
+        done();
+      });
+
     });
 
 

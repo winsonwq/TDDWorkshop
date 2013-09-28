@@ -27,4 +27,13 @@ describe('curry', function () {
 
   });
 
+  describe('pass not enough length of arguments in currid function', function () {
+    
+    it('should return a function', function (done) {
+      curriedFunc(1, 2).should.be.a('function');
+      done();
+    });
+
+  });
+
 });

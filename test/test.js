@@ -81,6 +81,19 @@ describe('curry', function () {
 
     });
 
+    describe('undefined in the middle of arguments', function () {
+      
+      it('should return a curried function', function (done) {
+        curriedFunc(1, undefined, 3).should.be.a('function');
+        done();
+      });
+
+      it('should return correct value', function (done) {
+        curriedFunc(1, undefined, 3)(2).should.equal(6);
+        done();
+      });
+
+    });
 
   });
 

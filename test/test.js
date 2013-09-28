@@ -27,7 +27,7 @@ describe('curry', function () {
 
   });
 
-  describe('pass not enough length of arguments in currid function', function () {
+  describe('not pass enough length of arguments in currid function', function () {
     
     it('should return a function', function (done) {
       curriedFunc(1, 2).should.be.a('function');
@@ -39,7 +39,7 @@ describe('curry', function () {
       done();
     });
 
-    it('should also return a function when I pass not all rest of arguments', function (done) {
+    it('should also return a function when I dont\'n pass all rest of arguments', function (done) {
       curriedFunc(1)(2).should.be.a('function');
       done();
     });
@@ -48,6 +48,20 @@ describe('curry', function () {
       curriedFunc(1)(2)(3).should.equal(6);
       done();
     });
+
+  });
+
+  describe('use undefined when create curried function', function () {
+    
+    describe('undefined at the tail', function () {
+      
+      it('should return a curried function', function (done) {
+        curriedFunc(1, 2, undefined).should.be.a('function');
+        done();
+      });
+
+    });
+
 
   });
 

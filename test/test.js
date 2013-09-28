@@ -44,6 +44,11 @@ describe('curry', function () {
       done();
     });
 
+    it('should return the same value when I pass rest of arguments again', function (done) {
+      curriedFunc(1)(2)(3).should.equal(6);
+      done();
+    });
+
   });
 
 });

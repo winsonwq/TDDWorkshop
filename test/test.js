@@ -104,6 +104,16 @@ describe('curry', function () {
 
     });
 
+    describe('use undefined more than curried level', function () {
+      
+      it('should return correct value', function (done) {
+        curriedFunc(undefined, 2, undefined)(1)(3).should.equal(6);
+        curriedFunc(undefined, 2, undefined)(undefined)(1)(undefined)(3).should.equal(6);
+        done();
+      });
+
+    });
+
   });
 
 });

@@ -53,7 +53,7 @@ describe('curry', function () {
 
   describe('use undefined when create curried function', function () {
     
-    describe('undefined at the tail', function () {
+    describe('undefined at the tail of arguments', function () {
       
       it('should return a curried function', function (done) {
         curriedFunc(1, 2, undefined).should.be.a('function');
@@ -62,6 +62,20 @@ describe('curry', function () {
 
       it('should return correct value', function (done) {
         curriedFunc(1, 2, undefined)(3).should.equal(6);
+        done();
+      });
+
+    });
+
+    describe('undefined at the head of arguments', function () {
+      
+      it('should return a curried function', function (done) {
+        curriedFunc(undefined, 2, 3).should.be.a('function');
+        done();
+      });
+
+      it('should return correct value', function (done) {
+        curriedFunc(undefined, 2, 3)(1).should.equal(6);
         done();
       });
 

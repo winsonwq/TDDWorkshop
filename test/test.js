@@ -95,6 +95,15 @@ describe('curry', function () {
 
     });
 
+    describe('undefined for all arguments', function () {
+      
+      it('should return correct value', function (done) {
+        curriedFunc(undefined, undefined, undefined)(1, 2, 3).should.equal(6);
+        done();
+      });
+
+    });
+
   });
 
 });

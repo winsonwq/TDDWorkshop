@@ -39,6 +39,11 @@ describe('curry', function () {
       done();
     });
 
+    it('should also return a function when I pass not all rest of arguments', function (done) {
+      curriedFunc(1)(2).should.be.a('function');
+      done();
+    });
+
   });
 
 });

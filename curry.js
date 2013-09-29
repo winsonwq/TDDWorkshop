@@ -21,16 +21,22 @@ function curry(fn) {
 
   function generateCurried() {
     var reservedArgs = slice.call(arguments);
+    var forceGenerating = false;
 
     function curried() {
       var args = concatArguments(slice.call(arguments), reservedArgs);
       
-      if (args.length == totalArgsLength && !existUndefinedArg(args)) {
+      if (!forceGenerating && args.length >= totalArgsLength && !existUndefinedArg(args)) {
         return fn.apply(null, args);
       } else {
         return generateCurried.apply(null, args);
       }
     }
+
+    curried._ = function () {
+      forceGenerating = true;
+      return generateCurried.apply(null, concatArguments(slice.call(arguments), reservedArgs));
+    };
 
     return curried;
   }

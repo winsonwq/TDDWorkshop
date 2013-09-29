@@ -116,4 +116,29 @@ describe('curry', function () {
 
   });
 
+  describe('uncertain length of parameters', function () {
+    
+    var uncertainCurriedFunc;
+
+    beforeEach(function() {
+      uncertainCurriedFunc = curry(function () {
+        return [].reduce.call(arguments, function (total, currentValue, index) {
+          return total + currentValue;
+        }, 0);
+      });
+    });
+
+
+    it('should return curried function', function (done) {
+      uncertainCurriedFunc._(1, 2).should.be.a('function');
+      uncertainCurriedFunc._(1, 2)(3).should.equal(6);
+      uncertainCurriedFunc._(1, 2)._(3, 4)(5).should.equal(15);
+      uncertainCurriedFunc._(1, undefined, 3)(2).should.equal(6);
+      uncertainCurriedFunc._(1, undefined, 3)._(2, 4)(5).should.equal(15);
+      uncertainCurriedFunc._(1, undefined, 3)._(2, undefined)(4, 5).should.equal(15);
+      done();
+    });
+
+  });
+
 });

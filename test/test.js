@@ -129,7 +129,7 @@ describe('curry', function () {
     });
 
 
-    it('should return curried function', function (done) {
+    it('should return correct value', function (done) {
       uncertainCurriedFunc._(1, 2).should.be.a('function');
       uncertainCurriedFunc._(1, 2)(3).should.equal(6);
       uncertainCurriedFunc._(1, 2)._(3, 4)(5).should.equal(15);
